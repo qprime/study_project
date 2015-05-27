@@ -1,0 +1,31 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. 
+Vagrant.configure(2) do |config|
+  config.vm.box = "chef/ubuntu-14.04"
+
+  # Create a public network, bridged network.
+  # config.vm.network "public_network"
+  config.vm.network "public_network", bridge: 'en0: Wi-Fi (AirPort)'
+
+  # Provider-specific configuration.
+  config.vm.provider "virtualbox" do |vb|
+    vb.gui = true # Display the VirtualBox GUI when booting the machine
+    vb.memory = 1024
+    vb.cpus = 2
+    vb.customize ["modifyvm", :id, "--vram", "32"]
+  end
+  
+  # Provisioning
+  config.vm.provision :shell, path:  "../provisioning/scripts/start.sh"
+  config.vm.provision :shell, path:  "../provisioning/scripts/lubuntu_desktop.sh"
+  config.vm.provision :shell, path:  "../provisioning/scripts/vbox_guest_additions.sh"
+  config.vm.provision "file", source: "../provisioning/files/meld.desktop", destination: "/home/vagrant/Desktop/meld.desktop"
+  config.vm.provision "file", source: "../provisioning/files/terminator.desktop", destination: "/home/vagrant/Desktop/terminiator.desktop"
+  config.vm.provision :shell, path:  "../provisioning/scripts/tools.sh"
+  #config.vm.provision :shell, path:  "../provisioning/scripts/mean_stack.sh"
+  config.vm.provision :shell, path:  "../provisioning/scripts/brackets.sh"
+  config.vm.provision :shell, path:  "../provisioning/scripts/finish.sh"
+  
+end

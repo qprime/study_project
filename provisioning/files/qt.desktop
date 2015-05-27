@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Name=QtCreator
+Comment=QtCreator
+Exec=/opt/Qt5.4.1/Tools/QtCreator/bin/qtcreator.sh
+Terminal=false
+Type=Application
+Icon=/opt/Qt5.4.1/Tools/QtCreator/share/qtcreator/welcomescreen/widgets/images/qtcreator.png
