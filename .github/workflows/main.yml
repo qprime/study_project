@@ -1,0 +1,15 @@
+name: First Workflow
+on:
+  push:
+    branches: [ "quinste-patch-1" ]
+permissions:
+  contents: read
+jobs:
+  hellogoodbye:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Print greeting
+        run: echo Hello World!
+      - name: Print goodbye
+        run: echo Goodbye Cruel World!!
